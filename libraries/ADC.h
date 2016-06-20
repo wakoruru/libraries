@@ -10,11 +10,11 @@ template<class TADC,class TDMA,class TIF>
 	TDMA dma;
 	public:
 	ADC_utility(){}
-	void init(int16_t readBuffer[],int num){
+	void init(int16_t readBuffer[],int ch){
 		_ready = false;
 		dma.DmaInterruptEventSender.insertSubscriber(DmaInterruptEventSourceSlot::bind(this,&ADC_utility::onComplete));
 		dma.enableInterrupts(TIF::COMPLETE);
-		dma.beginRead(readBuffer,num+1);
+		dma.beginRead(readBuffer,ch+1);
 	}
 	void adc_Read(){
         adc.startRegularConversion();
