@@ -10,14 +10,12 @@ template<class USARTX,class INT>
 	uint8_t _index;
 	typedef INT Interrupts;
 	USARTX usart;
-	MicrosecondDelay Micro;
 	Nvic _Nvic;
 	public:
 	uint8_t _buffer[5];
 	Bluetooth():usart(57600){
 		_buffer[0] = 0;_buffer[1] = 0;_buffer[2] = 0;_buffer[3] = 0;_buffer[4] = 0;
 		_Nvic.initialise();
-		Micro.initialise();
 	}
 	//初期化
 	void init(){
